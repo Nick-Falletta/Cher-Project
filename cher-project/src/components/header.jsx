@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 // For burger menu icon
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -6,6 +7,13 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 const Header = ({coins}) => {
   // Variable for detecting if burger icon is opened or closed
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  // Brings user to module screen
+  const goHome = () => {
+    setIsOpen(false);
+    navigate('/');
+  }
 
   // List buttons easier (avoid repetitive code)
   const buttonClasses =
@@ -15,6 +23,7 @@ const Header = ({coins}) => {
     <>
       <button className={buttonClasses}>Log In</button> 
       <button className={buttonClasses}>Register</button>
+      <button onClick={goHome} className={buttonClasses}>Home</button>
     </>
   );
 

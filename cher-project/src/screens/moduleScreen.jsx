@@ -36,7 +36,7 @@ const Module = ({ title, progress, total, coins, onStart, lessons }) => {
               >
                 <span className="text-gray-800 font-medium">{lesson.title}</span>
                 <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-500 italic">Uncompleted</span>
+                  <span className="text-sm text-gray-500 italic">{index >= progress ? (<span>Uncompleted</span>) : (<span>Completed</span>)}</span>
                   {isOpen ? (
                     <ChevronUpIcon className="h-5 w-5 text-gray-600" />
                   ) : (

@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default function CompletionScreen({ }) {
+const Complete = ({}) => {
+
   return (
     <div></div>
   );
 }
+
+export default Complete;

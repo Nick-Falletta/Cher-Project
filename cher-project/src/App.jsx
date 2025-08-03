@@ -35,6 +35,12 @@ function App() {
   const [completed, setCompleted] = useState(0);
   const [coins, setCoins] = useState(0);
   const navigate = useNavigate();
+  const [answers, setAnswers] = useState(Array(homeInspectData.length).fill({
+    selected: '',
+    submitted: false,
+    isCorrect: null
+  }));
+
 
   const startModule = () => {
     // Goes to first lesson
@@ -42,9 +48,7 @@ function App() {
   };
 
   const completeLesson = (lessonIndex) => {
-    setCompleted((prev) => prev + 1);
-
-    if (lessonIndex < homeInspectData.length - 1) {
+    if (lessonIndex < homeInspectData.length) {
       navigate(`/lesson/${lessonIndex + 1}`);
     } else {
       setCoins(50);
@@ -76,8 +80,10 @@ function App() {
               <Lesson
                 data={homeInspectData}
                 onComplete={completeLesson}
+                onAnswer={setCompleted}
                 progress={completed}
-                total={10}
+                answers={answers}
+                setAnswers={setAnswers}
               />
             }
           />
