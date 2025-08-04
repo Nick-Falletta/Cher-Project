@@ -1,4 +1,4 @@
-# Cher Project
+# NestNavApp
 
 **Nicholas Falletta**
 **August 3, 2025**
@@ -72,6 +72,9 @@ Vercel Link:
 
 1. **Hardcoded Elements**:
    Some elements are still hardcoded rather than being pulled from `module.json`. Given more time, I would have included additional fields like `"complete": false` or `"answered": false` to better track lesson progress. Currently, progress is inferred from the questions that have been answered. This is something I would improve in a more scalable version.
+
+2. **Quiz Logic**:
+   Answering every question wrong will still give you the reward. With more time, I would have liked to give the user a minimum of 2 answers be correct for the reward, as well as let them answer each question twice.
 
 ---
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './index.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -8,10 +8,12 @@ import CompletionScreen from './screens/completionScreen';
 import Header from './components/header';
 import dataJSON from './data/modules.json';
 
-function App() {
+function NestNavApp() {
   const [completed, setCompleted] = useState(0);
   const [coins, setCoins] = useState(0);
   const navigate = useNavigate();
+
+  // Module Data from JSON file
   const module1 = dataJSON.module1;
 
   // Keeps track of questions answered in modules
@@ -23,11 +25,13 @@ function App() {
     }))
   );
 
+  // Goes to first lesson
   const startModule = () => {
-    // Goes to first lesson
     navigate('/lesson/1');
   };
 
+  // Navigates user to the next lesson
+  // Navigates to completion screen if there are no more lessons
   const completeLesson = (lessonIndex) => {
     if (lessonIndex < module1.lessons.length) {
       navigate(`/lesson/${lessonIndex + 1}`);
@@ -39,9 +43,12 @@ function App() {
 
   return (
     <>
+      {/* Sets up the header (Name, User's Coins, Burger menu) */}
       <Header coins={coins} />
       <div className="pt-24 pl-5 pr-5 min-h-screen w-full bg-gray-50 text-gray-800">
         <Routes>
+          
+          {/* Sets up the module (Module's Title, Lessons, Coin Rewards, Progress) */}
           <Route
             path="/"
             element={
@@ -52,6 +59,8 @@ function App() {
               />
             }
           />
+
+          {/* Sets up the lessons (Multiple Choice Questions, Progress Bar) */}
           <Route
             path="/lesson/:id"
             element={
@@ -64,6 +73,8 @@ function App() {
               />
             }
           />
+
+          {/* Sets up the completion screen (Reward, Quiz Information) */}
           <Route
             path="/complete"
             element={
@@ -80,4 +91,4 @@ function App() {
   );
 }
 
-export default App;
+export default NestNavApp;

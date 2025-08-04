@@ -1,35 +1,34 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Header = ({coins}) => {
+const Header = ({ coins }) => {
   // Variable for detecting if burger icon is opened or closed
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Brings user to module screen
+  // Brings user to home (module) screen
   const goHome = () => {
     setIsOpen(false);
     navigate('/');
-  }
+  };
 
-  // List buttons easier (avoid repetitive code) with a smooth hover effect
+  // Burger menu buttons CSS
+  // Includes a smooth hover animation
   const buttonClasses = `
-    relative
-    text-gray-100 font-bold text-lg px-2 py-1
+    relative text-gray-100 font-bold text-lg px-2 py-1
     transition duration-300 ease-in-out
-    after:content-['']
-    after:absolute after:left-0 after:bottom-0
-    after:w-full after:h-[2px]
-    after:bg-gray-100 after:scale-x-0
-    after:transition-transform after:duration-300
-    after:origin-left
-    hover:after:scale-x-100
-    active:after:scale-x-100
+    after:content-[''] after:absolute after:left-0 after:bottom-0
+    after:w-full after:h-[2px] after:bg-gray-100 after:scale-x-0
+    after:transition-transform after:duration-300 after:origin-left
+    hover:after:scale-x-100 active:after:scale-x-100
+    cursor-pointer
   `;
-  // Sample buttons for logging in and registering (just for show)
-    const buttons = (
+
+  // Burger menu buttons
+  // Account and Rewards is for show, but the Home button brings you to the module page
+  const buttons = (
     <>
-      <button className={buttonClasses}>Account</button> 
+      <button className={buttonClasses}>Account</button>
       <button className={buttonClasses}>Rewards</button>
       <button onClick={goHome} className={buttonClasses}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -41,49 +40,49 @@ const Header = ({coins}) => {
   );
 
   return (
-    // Creates the heading for the application
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-md ">
-        <div className="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
-        
-        {/* Title */}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-md">
+      <div className="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+
         <div className="text-xl font-bold">Nick Falletta</div>
 
-        <div className='flex flex-row items-center space-x-4'>
+        <div className="flex flex-row items-center space-x-4">
 
-          {/* Coin text and counter */}
-          <div className='text-lg text-orange-600 flex flex-row'>{coins} 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          {/* User's Coins */}
+          <div className="text-lg text-orange-600 flex flex-row items-center">
+            {coins}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 ml-1">
               <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
             </svg>
           </div>
-          {/* Lists buttons if screen is large enough */}
+
+          {/* Lists burger menu buttons visibly for larger screens */}
           <div className="hidden md:flex space-x-2">
-              {buttons}
+            {buttons}
           </div>
-          {/* If screen is smaller, burger menu icon will show */}
+
+          {/* Burger menu for smaller screens */}
           <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white focus:outline-none p-1 hover:bg-gray-100 hover:text-gray-800 active:bg-gray-100 active:text-gray-800 rounded-lg transition duration-300"
-            aria-label="Toggle Menu"
-          >
-            {/* Open and close menu icon */}
-            {isOpen ? (
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white cursor-pointer focus:outline-none p-1 hover:bg-gray-100 hover:text-gray-800 active:bg-gray-100 active:text-gray-800 rounded-lg transition duration-300"
+              aria-label="Toggle Menu"
+            >
+              {/* Open and close burger menu */}
+              {isOpen ? (
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
-            ) : (
+              ) : (
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-            )}
-          </button>
+              )}
+            </button>
           </div>
-
         </div>
-        </div>
+      </div>
 
-      {/* Shows buttons when burger icon is clicked with a smooth transition */}
+      {/* Header extends down if burger menu is pressed */}
       <div
         className={`md:hidden px-4 pb-2 flex justify-end transition-all duration-300 ease-in-out overflow-hidden
           ${isOpen ? 'max-h-40 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-2'}

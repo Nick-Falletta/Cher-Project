@@ -15,6 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fade animation for the completion screen confetti */
 @keyframes fadeOut {
   from {
     opacity: 1;
