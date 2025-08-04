@@ -24,12 +24,13 @@ const Header = ({coins}) => {
     after:transition-transform after:duration-300
     after:origin-left
     hover:after:scale-x-100
+    active:after:scale-x-100
   `;
   // Sample buttons for logging in and registering (just for show)
     const buttons = (
     <>
-      <button className={buttonClasses}>Log In</button> 
-      <button className={buttonClasses}>Register</button>
+      <button className={buttonClasses}>Account</button> 
+      <button className={buttonClasses}>Rewards</button>
       <button onClick={goHome} className={buttonClasses}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
           <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
@@ -63,7 +64,7 @@ const Header = ({coins}) => {
           <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white focus:outline-none p-1 hover:bg-gray-100 hover:text-gray-800 rounded-lg transition duration-300"
+            className="text-white focus:outline-none p-1 hover:bg-gray-100 hover:text-gray-800 active:bg-gray-100 active:text-gray-800 rounded-lg transition duration-300"
             aria-label="Toggle Menu"
           >
             {/* Open and close menu icon */}

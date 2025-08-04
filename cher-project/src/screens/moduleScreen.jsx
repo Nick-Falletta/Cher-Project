@@ -39,7 +39,7 @@ const Module = ({ progress, onStart, answers }) => {
           const isCorrect = answer?.isCorrect;
           const isOpen = expandedLessons.has(index);
           return (
-            <div key={index} className="bg-gray-100 rounded">
+            <div key={index} className="bg-gray-100 rounded hover:bg-gray-200 active:bg-gray-200 transition duration-300">
 
               {/* Visible content */}
               <div
@@ -70,7 +70,7 @@ const Module = ({ progress, onStart, answers }) => {
                 <div className="text-sm text-gray-800 space-y-2 py-2">
                   <p className="text-left"><strong>Description:</strong> {lesson.content}</p>
                   <p className="text-left flex flex-row">
-                    <strong className='mr-1'>Questions answered:</strong>{' '}
+                    <strong className='mr-1 whitespace-nowrap'>Questions answered:</strong>{' '}
                     <span>{isCorrect === true ? '1 correct / 0 incorrect' :
                     isCorrect === false ? '0 correct / 1 incorrect' :
                     '0 correct / 0 incorrect'}</span>
@@ -94,7 +94,7 @@ const Module = ({ progress, onStart, answers }) => {
           </div>
           <button
             onClick={onStart}
-            className="text-gray-800 font-bold text-sm px-2 py-1 border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300"
+            className="text-gray-800 font-bold text-sm px-2 py-1 border-2 border-gray-800 active:bg-gray-800 active:text-gray-100 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300"
           >
             {progress === total ? 'Review Module' : 'Start Module'}
           </button>

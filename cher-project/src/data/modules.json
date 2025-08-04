@@ -19,7 +19,24 @@
           "question": "Which is NOT a type of inspection?",
           "options": ["Plumbing", "Furnishing", "Roofing"],
           "answer": "Furnishing",
-          "reason": "Furnishing is related to decor, not structural or safety inspections. Inspections typically focus on systems like plumbing, electrical, and roofing."
+          "reason": "Furnishing is related to decor, not structural or safety inspections. Inspections typically focus on systems like plumbing, electrical, and roofing.",
+          "diagram": [
+            {
+              "label": "Electrical",
+              "img": "/images/electrical.png",
+              "link": "https://www.angi.com/articles/electrical-inspection.htm"
+            },
+            {
+              "label": "Plumbing",
+              "img": "/images/plumbing.png",
+              "link": "https://teamenoch.com/blog/plumbing-inspection"
+            },
+            {
+              "label": "Roofing",
+              "img": "/images/roofing.png",
+              "link": "https://www.thisoldhouse.com/roofing/what-is-a-roof-inspection"
+            }
+          ]
         },
         {
           "title": "Red Flags to Watch For",

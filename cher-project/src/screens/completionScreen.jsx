@@ -12,6 +12,8 @@ const Complete = ({ coins, setCoins, answers }) => {
   const { width, height } = useWindowSize();
 
   const module1 = dataJSON.module1;
+  const total = module1.lessons.length;
+  const progress = answers.filter(a => a != null).length;
 
   const navigate = useNavigate();
 
@@ -21,11 +23,14 @@ const Complete = ({ coins, setCoins, answers }) => {
 
   // Increases the amount of coins earned rapidly for an enjoyable animation
   // Confetti flies in
-  useEffect(() => {
-    // Sets users coins
+  const congrats = () => {
+    // Sets users coins on header
     setCoins(module1.coinReward);
 
+    // Throws Confetti
     setShowConfetti(true);
+
+    // Number of coins animation
     let current = 0;
     const target = module1.coinReward;
     const increment = Math.ceil(target / 100);
@@ -38,10 +43,20 @@ const Complete = ({ coins, setCoins, answers }) => {
         // Once tempCoins reaches the rewarded coins the animation stops
         setTempCoins(current);
       }
-    }, 15);
-    
+    }, 50);
     return () => clearInterval(interval);
-  }, [coins]);
+  }
+
+  useEffect(() => {
+    const moduleKey = 'module1-rewardAnimation';
+    if (progress === total && !localStorage.getItem(moduleKey)) {
+      congrats();
+      localStorage.setItem(moduleKey, 'true');
+    } else {
+      // Shows the coin amount you already received without the coin animation
+      setTempCoins(module1.coinReward);
+    }
+  }, [progress, total]);
 
   // Confetti fades and lasts 5 seconds
   useEffect(() => {
@@ -89,7 +104,7 @@ const Complete = ({ coins, setCoins, answers }) => {
       {/* Divider */}
       <hr className="my-5 lg:my-15 border-.5 border-gray-300 w-full" />
 
-      <div className="text-2xl font-semibold mb-4">Lesson Review</div>
+      <div className="text-2xl font-semibold mb-4 justify-center flex">Lesson Review</div>
 
       <div className='mb-4 flex justify-center flex-col lg:flex-row'>
         {module1.lessons.map((lesson, idx) => {
@@ -114,10 +129,10 @@ const Complete = ({ coins, setCoins, answers }) => {
         })}
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center w-full w-auto">
         <button
           onClick={goHome}
-          className="text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition-colors duration-300 px-6 py-2"
+          className="w-100 text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 active:bg-gray-800 active:text-gray-100 rounded-lg transition-colors duration-300 px-6 py-2"
         >
           Home
         </button>
