@@ -58,7 +58,7 @@ const Lesson = ({ data, onComplete, progress, onAnswer, answers, setAnswers}) =>
   };
 
   return (
-    <div className="flex flex-col bg-gray-50 min-h-screen">
+    <div className="flex flex-col bg-gray-50 min-h-screen pb-20">
 
       {/* Progress Bar */}
       <div className="mb-6">
