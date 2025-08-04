@@ -14,7 +14,7 @@ const Module = ({ title, progress, total, coins, onStart, lessons, answers }) =>
 };
 
   return (
-    <div className="mx-auto bg-white shadow-md rounded-lg p-6">
+    <div className="mx-auto bg-white shadow-md rounded-lg p-6 pb-20">
       {/* Module Title */}
       <div className="mb-4 w-full">
         <div>
