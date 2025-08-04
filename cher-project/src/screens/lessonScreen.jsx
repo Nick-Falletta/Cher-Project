@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import dataJSON from '../data/modules.json';
 
-const Lesson = ({ data, onComplete, progress, onAnswer, answers, setAnswers}) => {
+const Lesson = ({ onComplete, progress, onAnswer, answers, setAnswers}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const lessonIndex = parseInt(id) - 1;
+
+  const module1 = dataJSON.module1;
+  const data = module1.lessons;
   const lesson = data[lessonIndex];
 
   const answer = answers[lessonIndex] || { selected: '', submitted: false, isCorrect: null };
@@ -58,7 +62,7 @@ const Lesson = ({ data, onComplete, progress, onAnswer, answers, setAnswers}) =>
   };
 
   return (
-    <div className="flex flex-col bg-gray-50 min-h-screen pb-20">
+    <div className="flex flex-col bg-gray-50 min-h-screen pb-20 lg:pb-0">
 
       {/* Progress Bar */}
       <div className="mb-6">

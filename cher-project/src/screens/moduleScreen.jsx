@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import dataJSON from '../data/modules.json'
 
-const Module = ({ title, progress, total, coins, onStart, lessons, answers }) => {
+const Module = ({ progress, onStart, answers }) => {
   const [expandedLessons, setExpandedLessons] = useState(new Set());
+  const module1 = dataJSON.module1;
+  const title = module1.title;
+  const total = module1.lessons.length;
+  const coins = module1.coinReward;
+  const lessons = module1.lessons;
 
   const toggleLesson = (index) => {
     const newSet = new Set(expandedLessons);
@@ -11,10 +17,10 @@ const Module = ({ title, progress, total, coins, onStart, lessons, answers }) =>
       newSet.add(index);
     }
     setExpandedLessons(newSet);
-};
+  };
 
   return (
-    <div className="mx-auto bg-white shadow-md rounded-lg p-6 pb-20">
+    <div className="mx-auto bg-white shadow-md rounded-lg p-6">
       {/* Module Title */}
       <div className="mb-4 w-full">
         <div>
@@ -79,7 +85,13 @@ const Module = ({ title, progress, total, coins, onStart, lessons, answers }) =>
       {/* Start button */}
       <div className="flex justify-end">
         <div className='flex justify-between flex row w-full'>
-          <h2 className="text-orange-600 text-2xl font-bold border-b-2">{coins} coins</h2>
+          {/* Coin Reward */}
+          <div className='text-orange-600 text-2xl font-bold border-b-2 flex flex-row'>
+            {coins}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+          </div>
           <button
             onClick={onStart}
             className="text-gray-800 font-bold text-sm px-2 py-1 border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300"
