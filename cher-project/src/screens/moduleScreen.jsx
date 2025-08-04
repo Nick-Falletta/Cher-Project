@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-// Arrow icons
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 const Module = ({ title, progress, total, coins, onStart, lessons }) => {
-  const [expandedLesson, setExpandedLesson] = useState(null);
+  const [expandedLessons, setExpandedLessons] = useState(new Set());
 
   const toggleLesson = (index) => {
-    setExpandedLesson(expandedLesson === index ? null : index);
-  };
+    const newSet = new Set(expandedLessons);
+    if (newSet.has(index)) {
+      newSet.delete(index);
+    } else {
+      newSet.add(index);
+    }
+    setExpandedLessons(newSet);
+};
 
   return (
     <div className="mx-auto bg-white shadow-md rounded-lg p-6">
       {/* Module Title */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 w-full">
         <div>
-          <h2 className="text-2xl font-bold">{title}</h2>
+          <div className='flex flex-row w-full justify-between'>
+            <h2 className="text-2xl font-bold">{title}</h2>
+            <h2 className="text-orange-600 text-2xl font-bold border-b-2">{coins} coins</h2>
+          </div>
           {/* Counts lessons completed */}
           <p className="text-sm text-gray-600">
             Progress: {progress}/{total} lessons completed
@@ -25,7 +32,7 @@ const Module = ({ title, progress, total, coins, onStart, lessons }) => {
       {/* Lesson List */}
       <div className="space-y-3 mb-6">
         {lessons.map((lesson, index) => {
-          const isOpen = expandedLesson === index;
+          const isOpen = expandedLessons.has(index);
           return (
             <div key={index} className="bg-gray-100 rounded">
 
@@ -38,20 +45,28 @@ const Module = ({ title, progress, total, coins, onStart, lessons }) => {
                 <div className="flex items-center space-x-2">
                   <span className="text-sm text-gray-500 italic">{index >= progress ? (<span>Uncompleted</span>) : (<span>Completed</span>)}</span>
                   {isOpen ? (
-                    <ChevronUpIcon className="h-5 w-5 text-gray-600" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 h-5 w-5 text-gray-600">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                    </svg>
                   ) : (
-                    <ChevronDownIcon className="h-5 w-5 text-gray-600" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 h-5 w-5 text-gray-600">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  </svg>
                   )}
                 </div>
               </div>
 
-              {/* Dropdown content */}
-              {isOpen && (
-                <div className="px-4 pb-4 text-sm text-gray-700 space-y-2">
-                  <p><strong>Description:</strong> {lesson.content}</p>
-                  <p><strong>Questions answered:</strong> 0 correct / 0 incorrect</p>
+              {/* Dropdown content with a smooth transition */}
+              <div
+                className={`px-4 pb-2 overflow-hidden transition-all duration-300 ease-in-out
+                  ${isOpen ? 'max-h-40 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-2'}
+                `}
+              >
+                <div className="text-sm text-gray-800 space-y-2 py-2">
+                  <p className="text-left"><strong>Description:</strong> {lesson.content}</p>
+                  <p className="text-left"><strong>Questions answered:</strong> 0 correct / 0 incorrect</p>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
@@ -63,7 +78,7 @@ const Module = ({ title, progress, total, coins, onStart, lessons }) => {
           onClick={onStart}
           className="text-gray-800 font-bold text-sm px-2 py-1 border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300"
         >
-          Start Module (Earn {coins} coins)
+          Start Module
         </button>
       </div>
     </div>

@@ -59,7 +59,7 @@ const Lesson = ({ data, onComplete, progress, onAnswer, answers, setAnswers}) =>
   };
 
   return (
-    <div className="flex flex-col max-w-3xl mx-auto mt-4">
+    <div className="flex flex-col mt-4">
 
       {/* Progress Bar */}
       <div className="mb-6">
@@ -109,41 +109,41 @@ const Lesson = ({ data, onComplete, progress, onAnswer, answers, setAnswers}) =>
             {option}
           </label>
         ))}
-        {submitted && (
-          <div className={`mt-2 font-semibold ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-            {isCorrect ? 'Correct!' : 'Incorrect.'}
-          </div>
-        )}
+        <div className={`${!submitted ? 'hidden' : ''} font-semibold ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+          {isCorrect ? 'Correct!' : 'Incorrect.'}
+        </div>
       </div>
 
       {/* Submit Button */}
-      {!submitted && (
-        <button
-          onClick={handleSubmit}
-          className="text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300 px-4 py-2 mb-8"
-          disabled={!selected}
-        >
-          Submit Answer
-        </button>
-      )}
+      <div className='flex justify-center'>
+      <button
+        onClick={handleSubmit}
+        className={`${submitted ? 'hidden' : ''} text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition-colors duration-300 px-4 py-2`}
+        disabled={!selected}
+      >
+        Submit Answer
+      </button>
+      </div>
+
 
       {/* Navigation Buttons */}
-      <div className="flex justify-between mt-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-white px-4 py-3 border-t border-gray-300 flex justify-between">
         <button
           onClick={goBack}
-          className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+          className="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-300"
         >
           Back
         </button>
         {submitted && (
           <button
             onClick={handleNext}
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            className="bg-white border-2 border-orange-600 text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
           >
             {lessonIndex < data.length - 1 ? 'Next Lesson' : 'Finish Module'}
           </button>
         )}
       </div>
+
     </div>
   );
 };
