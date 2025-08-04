@@ -147,7 +147,7 @@ const Complete = ({ coins, setCoins, answers }) => {
       <div className="flex justify-center w-full">
         <button
           onClick={goHome}
-          className="w-100 cursor-pointer text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 active:bg-gray-800 active:text-gray-100 rounded-lg transition-colors duration-300 px-6 py-2"
+          className="w-100 cursor-pointer text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition-colors duration-300 px-6 py-2"
         >
           Home
         </button>

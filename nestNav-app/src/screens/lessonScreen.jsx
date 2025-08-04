@@ -134,8 +134,8 @@ const Lesson = ({ onComplete, progress, onAnswer, answers, setAnswers }) => {
               // Green - correct after submitting
               // Red - incorrect after submitting
               className={`block px-4 py-2 rounded border cursor-pointer mb-2 lg:mr-2 lg:w-70 justify-center
-                ${!submitted && selected !== option ? 'hover:bg-gray-200 active:bg-gray-200 transition duration-300' : ''}
-                ${!submitted && selected === option ? 'hover:bg-orange-200 active:bg-orange-200 transition duration-300' : ''}
+                ${!submitted && selected !== option ? 'hover:bg-gray-200 transition duration-300' : ''}
+                ${!submitted && selected === option ? 'hover:bg-orange-200 transition duration-300' : ''}
                 ${submitted && option === lesson.answer ? 'border-green-600 bg-green-100' : ''}
                 ${submitted && selected === option && selected !== lesson.answer ? 'border-red-500 bg-red-100' : ''}
                 ${!submitted && selected === option ? 'bg-orange-100 border-orange-600' : ''}
@@ -167,7 +167,7 @@ const Lesson = ({ onComplete, progress, onAnswer, answers, setAnswers }) => {
         {/* Hides once pressed to submit an answer */}
         <button
           onClick={handleSubmit}
-          className={`${submitted ? 'hidden' : ''} text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 active:bg-gray-800 active:text-gray-100 rounded-lg transition-colors duration-300 px-4 py-2`}
+          className={`${submitted ? 'hidden' : ''} text-gray-800 font-bold border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition-colors duration-300 px-4 py-2`}
           disabled={!selected}
         >
           Submit Answer
@@ -180,7 +180,7 @@ const Lesson = ({ onComplete, progress, onAnswer, answers, setAnswers }) => {
         {/* Back Button to go back a page */}
         <button
           onClick={goBack}
-          className="bg-gray-200 cursor-pointer px-4 py-2 rounded-lg hover:bg-gray-300 active:bg-gray-300 transition duration-300"
+          className="bg-gray-200 cursor-pointer px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-300"
         >
           Back
         </button>
@@ -189,7 +189,7 @@ const Lesson = ({ onComplete, progress, onAnswer, answers, setAnswers }) => {
         {submitted && (
           <button
             onClick={handleNext}
-            className="bg-white cursor-pointer border-2 border-orange-600 text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-600 hover:text-white active:bg-orange-600 active:text-white transition duration-300"
+            className="bg-white cursor-pointer border-2 border-orange-600 text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
           >
             {lessonIndex < data.length - 1 ? 'Next Lesson' : 'Finish Module'}
           </button>

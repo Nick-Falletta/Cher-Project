@@ -35,7 +35,7 @@ const Module = ({ progress, onStart, answers }) => {
           return (
             <div
               key={index}
-              className="bg-gray-100 rounded hover:bg-gray-200 active:bg-gray-200 transition duration-300"
+              className="bg-gray-100 rounded hover:bg-gray-200 transition duration-300"
             >
               {/* Lesson preview content */}
               <div
@@ -78,7 +78,7 @@ const Module = ({ progress, onStart, answers }) => {
                         this is coded to show whether or not it was
                         answered correctly or not
                     */}
-                    <strong className='mr-1'>Questions answered:</strong>{' '}
+                    <strong className='mr-1'>Progress:</strong>{' '}
                     <span className='whitespace-nowrap'>
                       {isCorrect === true ? '1 correct / 0 incorrect' :
                       isCorrect === false ? '0 correct / 1 incorrect' :
@@ -105,7 +105,7 @@ const Module = ({ progress, onStart, answers }) => {
 
         <button
           onClick={onStart}
-          className="text-gray-800 cursor-pointer font-bold text-sm px-2 py-1 border-2 border-gray-800 active:bg-gray-800 active:text-gray-100 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300"
+          className="text-gray-800 cursor-pointer font-bold text-sm px-2 py-1 border-2 border-gray-800 hover:bg-gray-800 hover:text-gray-100 rounded-lg transition duration-300"
         >
           {/* Start Module button becomes "Review Module" once all lessons are completed */}
           {progress === total ? 'Review Module' : 'Start Module'}

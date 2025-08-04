@@ -20,7 +20,7 @@ const Header = ({ coins }) => {
     after:content-[''] after:absolute after:left-0 after:bottom-0
     after:w-full after:h-[2px] after:bg-gray-100 after:scale-x-0
     after:transition-transform after:duration-300 after:origin-left
-    hover:after:scale-x-100 active:after:scale-x-100
+    hover:after:scale-x-100
     cursor-pointer
   `;
 
@@ -64,7 +64,7 @@ const Header = ({ coins }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white cursor-pointer focus:outline-none p-1 hover:bg-gray-100 hover:text-gray-800 active:bg-gray-100 active:text-gray-800 rounded-lg transition duration-300"
+              className="text-white cursor-pointer focus:outline-none p-1 hover:bg-gray-100 hover:text-gray-800 rounded-lg transition duration-300"
               aria-label="Toggle Menu"
             >
               {/* Open and close burger menu */}
