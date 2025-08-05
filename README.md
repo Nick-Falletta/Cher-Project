@@ -19,13 +19,15 @@ Each section contains a short reading followed by a single multiple-choice quest
 
 ## Setup Instructions
 
+**IMPORTANT:** The CSS tends to break if used in Chrome with dark mode enabled
+
 To get started locally:
 
 1. Clone or download the project from GitHub
 2. Open your terminal and navigate into the project folder:
 
    ```bash
-   cd cher-project
+   cd nestNav-app
    ```
 3. Install dependencies:
 
