@@ -46,7 +46,7 @@ To get started locally:
 ### Live Demo
 
 Vercel Link:
-[nest-nav-project.vercel.app](nest-nav-project.vercel.app)
+[https://nest-nav-project.vercel.app](https://nest-nav-project.vercel.app)
 
 ---
 
